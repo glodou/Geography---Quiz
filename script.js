@@ -19,6 +19,7 @@ const questions=[
 ];
 
 let currentQuestion=0;
+let score=0;
 
 
 const questionE1=document.getElementById("question");
@@ -58,8 +59,13 @@ function selectAnswer(index) {
 
         }else {
             btn.style.backgroundColor="red";
-        }
+        } 
+        btn.disabled=true;
     });
+
+    if (index===correct ) {
+        score++;
+    }
 }
 
 nextBtn.addEventListener("click",() =>{
@@ -73,7 +79,7 @@ nextBtn.addEventListener("click",() =>{
 });
 
 function showResult() {
-    questionE1.innerText=`Done!`;
+    questionE1.innerText=`Done!Score:${score}/${questions.length}`;
     answerE1.innerHTML="";
     nextBtn.style.display="none";
     restartBtn.style.display="block";
